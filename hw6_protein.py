@@ -1,7 +1,7 @@
 """
 Protein Sequencing Project
-Name:
-Roll Number:
+Name: CH.Nithin Chakravarthy
+Roll Number: IIITH-C2-025
 """
 
 import hw6_protein_tests as test
@@ -17,9 +17,14 @@ Parameters: str
 Returns: str
 '''
 def readFile(filename):
-    return
+    file= open(filename,"r")
+    a=file.read()
+    stri=""
+    for line in a.splitlines():
+        stri= stri+line
+    return stri
 
-
+    
 '''
 dnaToRna(dna, startIndex)
 #2 [Check6-1]
@@ -190,6 +195,7 @@ if __name__ == "__main__":
     test.week1Tests()
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     runWeek1()
+    test.testReadFile()
 
     ## Uncomment these for Week 2 ##
     """
