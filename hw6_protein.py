@@ -19,10 +19,10 @@ Returns: str
 def readFile(filename):
     file= open(filename,"r")
     a=file.read()
-    stri=""
+    str=""
     for line in a.splitlines():
-        stri= stri+line
-    return stri
+        str= str+line
+    return str
 
     
 '''
@@ -32,8 +32,7 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    return
-
+    return 
 
 '''
 makeCodonDictionary(filename)
@@ -196,6 +195,7 @@ if __name__ == "__main__":
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     runWeek1()
     test.testReadFile()
+    
 
     ## Uncomment these for Week 2 ##
     """
