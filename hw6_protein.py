@@ -298,7 +298,16 @@ Parameters: list of strs ; 2D list of values
 Returns: list of strs
 '''
 def makeEdgeList(labels, biggestDiffs):
-    return
+    colorlist = []
+    wordlist1 = []
+    for word1 in labels:
+        for word in biggestDiffs:
+            wordlist1.append(word[0])
+        if word1 in wordlist1:
+            colorlist.append("black")
+        else:
+            colorlist.append("white")
+    return colorlist
 
 
 '''
@@ -335,14 +344,15 @@ if __name__ == "__main__":
     #test.testCombineProteins()
     #test.testAminoAcidDictionary()
     #test.testFindAminoAcidDifferences()
-    #test.testMakeAminoAcidLabels()
-    #test.testSetupChartData()
-    test.testCreateChart()
+    
 
     ## Uncomment these for Week 3 ##
-    """
+    
     print("\n" + "#"*15 + " WEEK 3 TESTS " +  "#" * 16 + "\n")
     test.week3Tests()
     print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     runFullProgram()
-    """
+    #test.testMakeAminoAcidLabels()
+    #test.testSetupChartData()
+    #test.testCreateChart()
+    test.testMakeEdgeList()
