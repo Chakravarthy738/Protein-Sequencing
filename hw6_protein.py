@@ -1,7 +1,7 @@
 """
 Protein Sequencing Project
-Name:
-Roll Number:
+Name: CH.Nithin Chakravarthy
+Roll Number: IIITH-C2-025
 """
 
 import hw6_protein_tests as test
@@ -17,9 +17,14 @@ Parameters: str
 Returns: str
 '''
 def readFile(filename):
-    return
+    file= open(filename,"r")
+    a=file.read()
+    str=""
+    for line in a.splitlines():
+        str= str+line
+    return str
 
-
+    
 '''
 dnaToRna(dna, startIndex)
 #2 [Check6-1]
@@ -27,7 +32,17 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    return
+    condonlist = []
+    var = ["UGA","UAG","UAA"]
+    for word in range(startIndex,len(dna),3):
+        dna = dna.replace("T","U")
+        condon = dna[word:word+3]
+        if condon not in var:
+            condonlist.append(condon)
+        else:
+            condonlist.append(condon)
+            break
+    return condonlist
 
 
 '''
@@ -38,7 +53,14 @@ Returns: dict mapping strs to strs
 '''
 def makeCodonDictionary(filename):
     import json
-    return
+    File = open(filename,"r")
+    protns = json.load(File)
+    codondict= {}
+    for key in protns:
+        for values in protns[key]:
+            values = values.replace("T","U")
+            codondict[values] = key
+    return codondict
 
 
 '''
@@ -190,6 +212,9 @@ if __name__ == "__main__":
     test.week1Tests()
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     runWeek1()
+    test.testReadFile()
+    test.testDnaToRna()
+    test.testMakeCodonDictionary()
 
     ## Uncomment these for Week 2 ##
     """
