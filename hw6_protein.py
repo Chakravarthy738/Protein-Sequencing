@@ -317,6 +317,16 @@ Parameters: no parameters
 Returns: None
 '''
 def runFullProgram():
+    proteins1 = synthesizeProteins("data/Human_p53.txt", "data/codon_table.json")
+    proteins2 = synthesizeProteins("data/Elephant_p53.txt", "data/codon_table.json")
+    commonproteins = commonProteins(proteins1, proteins2)
+    aminodiff = findAminoAcidDifferences(proteins1,proteins2,0.005)
+    displytext = displayTextResults(commonproteins, aminodiff)
+    aminolabels = makeAminoAcidLabels(proteins1,proteins2)
+    f1 = setupChartData(aminolabels, proteins1)
+    f2 = setupChartData(aminolabels, proteins2)
+    edges = makeEdgeList(aminolabels, aminodiff)
+    finalchart = createChart(aminolabels, f1, 'Human', f2, 'Elephant', edgeList=edges)
     return
 
 
@@ -355,4 +365,4 @@ if __name__ == "__main__":
     #test.testMakeAminoAcidLabels()
     #test.testSetupChartData()
     #test.testCreateChart()
-    test.testMakeEdgeList()
+    #test.testMakeEdgeList()
